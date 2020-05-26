@@ -1,0 +1,19 @@
+{
+  "name": "maelstrom",
+  "version": "1.0.0",
+  "description": "vulnerability assessment platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hitmani90/Maelstrom.git"
+  },
+  "author": "Sean Hall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hitmani90/Maelstrom/issues"
+  },
+  "homepage": "https://github.com/hitmani90/Maelstrom#readme"
+}
