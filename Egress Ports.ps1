@@ -29,33 +29,18 @@ function Get-EgressPorts {
    $ports = @()
    $portnum = 0
 
-   if($QuickScan) {
-      20,21,22,23,24,25,53,80,100,106,109,110,111,113,119,125,135,139,143,144,146,161,163,179,199,211,212,222,254,425,427,443,444,445,3389,8080,9000 | % {
-        $test= new-object system.Net.Sockets.TcpClient
+   1..1024 | % {
+     $test= new-object system.Net.Sockets.TcpClient
 
-        $wait = $test.beginConnect("portquiz.net",$_,$null,$null)
-        $resp = ($wait.asyncwaithandle.waitone(250,$false))
+     $wait = $test.beginConnect("allports.exposed",$_,$null,$null)
+     $resp = ($wait.asyncwaithandle.waitone(250,$false))
 
-        if($test.Connected)
-        {
-           $portnum = $portnum + 1
-           $ports += $_
-        }
-      }
-    } else {
-      1..1024 | % {
-        $test= new-object system.Net.Sockets.TcpClient
-
-        $wait = $test.beginConnect("portquiz.net",$_,$null,$null)
-        $resp = ($wait.asyncwaithandle.waitone(250,$false))
-
-        if($test.Connected)
-        {
-           $portnum = $portnum + 1
-           $ports += $_
-        }
-      }
-    }
+     if($test.Connected)
+     {
+        $portnum = $portnum + 1
+        $ports += $_
+     }
+   }
 
 
 
